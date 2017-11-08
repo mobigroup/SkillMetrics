@@ -113,11 +113,28 @@ def plot_pattern_diagram_markers(X,Y,option):
                     # Label marker
                     xtextpos = X[i] #ToDo: convert to double?
                     ytextpos = Y[i]
-                    plt.text(xtextpos,ytextpos,option['markerlabel'][i], 
+                    
+                    if type(option['verticalalignment']) == list:
+                        va = option['verticalalignment'][i]
+                    else:
+                        va = option['verticalalignment']
+                    if type(option['horizontalalignment']) == list:
+                        ha = option['horizontalalignment'][i]
+                    else:
+                        ha = option['horizontalalignment']
+                    if type(option['offset']) == list:
+                        offset = option['offset'][i]
+                    else:
+                        offset = option['offset']
+                    
+                    plt.annotate(option['markerlabel'][i], xy=(xtextpos,ytextpos),
+                             xytext=offset, textcoords='offset points',
                              color = option['markerlabelcolor'],
-                             verticalalignment = 'bottom',
-                             horizontalalignment = 'right',
-                             fontsize = 'medium')
+                             verticalalignment = va,
+                             horizontalalignment = ha,
+                             fontsize = option['fontsize'],
+                             fontweight='bold',
+                             bbox=dict(boxstyle='square,pad=10', fc='none', ec='none'))
 
 def _disp(text):
     print(text)

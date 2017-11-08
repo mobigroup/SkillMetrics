@@ -111,6 +111,12 @@ def get_taylor_diagram_options(*args,**kwargs):
 
     # Set default parameters for all options
     option = {}
+    
+    option['fontsize'] = 'medium'
+    option['verticalalignment'] = 'bottom'
+    option['horizontalalignment'] = 'right'
+    option['offset'] = (0,0)
+    
     option['alpha'] = 1.0
     option['axismax'] = 0.0
     option['checkstats'] = 'off'
